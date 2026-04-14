@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Shepherd's Experience — The Centenarian</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8860B;
+    --gold-light: #D4A017;
+    --gold-pale: #F5EDD6;
+    --black: #0D0D0D;
+    --warm-dark: #1A1612;
+    --warm-mid: #2C2420;
+    --cream: #FAF7F2;
+    --text-muted: #8C7B6B;
+    --text-body: #3D3028;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text-body); }
+
+  .nav { background: var(--warm-dark); display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; border-bottom: 1px solid rgba(184,134,11,0.2); }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: var(--cream); text-decoration: none; }
+  .nav-back { font-size: 11px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color .2s; }
+  .nav-back:hover { color: var(--gold); }
+
+  .hero { background: var(--warm-dark); padding: 80px 48px 72px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 50%, rgba(184,134,11,0.1) 0%, transparent 70%); pointer-events: none; }
+  .hero-inner { position: relative; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+  .hero-sub { font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; display: block; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 6vw, 80px); font-weight: 300; color: var(--cream); line-height: 1.05; margin-bottom: 2rem; }
+  .hero-title em { font-style: italic; color: var(--gold-light); }
+  .hero-route { font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.5); letter-spacing: .08em; margin-bottom: 2.5rem; }
+  .glance { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 2.5rem; }
+  .glance-item { display: flex; align-items: center; gap: 8px; border: 1px solid rgba(184,134,11,0.35); padding: 8px 16px; }
+  .glance-label { font-size: 9px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); }
+  .glance-value { font-size: 12px; font-weight: 500; letter-spacing: .05em; color: var(--cream); }
+  .hero-cta { background: var(--gold); color: var(--black); font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; padding: 14px 32px; border: none; cursor: pointer; transition: background .2s; text-decoration: none; display: inline-block; }
+  .hero-cta:hover { background: var(--gold-light); }
+  .hero-photos { display: grid; grid-template-rows: 1fr 1fr; gap: 4px; height: 400px; }
+  .hero-photo { background: var(--warm-mid); overflow: hidden; }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+  .hero-photo:hover img { transform: scale(1.04); }
+
+  /* TUCCI BADGE */
+  .tucci-badge { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--gold); padding: 8px 16px; margin-bottom: 20px; }
+  .tucci-badge-top { font-size: 9px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); }
+  .tucci-badge-main { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-style: italic; color: var(--gold-light); }
+  .tucci-badge-sep { color: rgba(184,134,11,0.3); }
+
+  .overview-strip { background: var(--gold-pale); padding: 56px 48px; border-bottom: 1px solid rgba(184,134,11,0.2); }
+  .overview-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr; gap: 64px; align-items: start; }
+  .section-label { font-size: 10px; font-weight: 500; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; display: block; }
+  .overview-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 3vw, 36px); font-weight: 300; color: var(--warm-dark); line-height: 1.2; margin-bottom: 16px; }
+  .overview-body { font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--text-body); margin-bottom: 20px; }
+  .overview-bullets { list-style: none; margin-top: 24px; }
+  .overview-bullets li { font-size: 14px; font-weight: 300; color: var(--text-body); line-height: 1.7; padding: 8px 0; border-bottom: 1px solid rgba(184,134,11,0.15); display: flex; gap: 12px; }
+  .overview-bullets li:last-child { border-bottom: none; }
+  .bullet-label { font-size: 10px; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); min-width: 90px; padding-top: 3px; }
+
+  .stops { max-width: 1100px; margin: 0 auto; padding: 80px 48px; }
+  .stops-header { margin-bottom: 56px; }
+  .stops-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(30px, 4vw, 44px); font-weight: 300; color: var(--warm-dark); }
+  .stop { display: grid; grid-template-columns: 80px 1fr 340px; gap: 0; margin-bottom: 2px; background: white; border: 1px solid rgba(184,134,11,0.12); transition: border-color .2s; }
+  .stop:hover { border-color: rgba(184,134,11,0.35); }
+  .stop-num-col { background: var(--warm-dark); display: flex; align-items: flex-start; justify-content: center; padding: 40px 0 0; }
+  .stop-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: rgba(184,134,11,0.4); line-height: 1; }
+  .stop-content { padding: 36px 40px; border-right: 1px solid rgba(184,134,11,0.1); }
+  .stop-time { font-size: 10px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; display: block; }
+  .stop-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: var(--warm-dark); margin-bottom: 6px; }
+  .stop-location { font-size: 12px; font-weight: 300; color: var(--text-muted); letter-spacing: .08em; margin-bottom: 16px; }
+  .stop-body { font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--text-body); margin-bottom: 20px; }
+  .stop-bullets { list-style: none; }
+  .stop-bullets li { font-size: 13px; font-weight: 300; color: var(--text-muted); padding: 5px 0; padding-left: 16px; position: relative; line-height: 1.6; }
+  .stop-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 11px; }
+  .stop-aside { padding: 36px 32px; background: #FDFAF5; }
+  .stop-aside-label { font-size: 10px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; display: block; border-bottom: 1px solid rgba(184,134,11,0.15); padding-bottom: 12px; }
+  .stop-detail { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
+  .stop-detail-key { font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); min-width: 72px; padding-top: 2px; }
+  .stop-detail-val { font-size: 13px; font-weight: 300; color: var(--text-body); line-height: 1.55; }
+  .stop-highlight { background: var(--warm-dark); padding: 16px; margin-top: 20px; }
+  .stop-highlight p { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; font-weight: 300; color: rgba(250,247,242,0.75); line-height: 1.6; }
+  .stop-highlight cite { display: block; font-size: 10px; font-style: normal; letter-spacing: .15em; text-transform: uppercase; color: var(--text-muted); margin-top: 8px; }
+
+  .michele-section { background: var(--warm-dark); padding: 80px 48px; }
+  .michele-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .michele-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: var(--cream); line-height: 1.1; margin-bottom: 20px; }
+  .michele-title em { font-style: italic; color: var(--gold-light); }
+  .michele-body { font-size: 15px; font-weight: 300; line-height: 1.85; color: rgba(250,247,242,0.65); margin-bottom: 20px; }
+  .michele-image { background: var(--warm-mid); aspect-ratio: 4/5; overflow: hidden; }
+  .michele-image img { width: 100%; height: 100%; object-fit: cover; }
+  .products-list { list-style: none; border-top: 1px solid rgba(184,134,11,0.2); margin-top: 24px; }
+  .products-list li { font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.55); padding: 8px 0; border-bottom: 1px solid rgba(184,134,11,0.1); display: flex; gap: 10px; }
+  .products-list li::before { content: '·'; color: var(--gold); }
+
+  .map-section { background: var(--warm-dark); padding: 0 48px 80px; }
+  .map-inner { max-width: 1100px; margin: 0 auto; }
+  .map-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; }
+  .map-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 3vw, 36px); font-weight: 300; color: var(--cream); }
+  .map-subtitle { font-size: 13px; font-weight: 300; color: var(--text-muted); }
+  .map-embed { width: 100%; height: 380px; border: none; filter: grayscale(15%); }
+  .map-route-strip { display: flex; align-items: center; gap: 0; margin-top: 20px; flex-wrap: wrap; }
+  .map-stop { display: flex; align-items: center; gap: 10px; }
+  .map-stop-dot { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+  .map-stop-name { font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--cream); }
+  .map-stop-arrow { font-size: 14px; color: rgba(184,134,11,0.4); margin: 0 14px; }
+
+  .practical { background: var(--cream); padding: 72px 48px; border-top: 1px solid rgba(184,134,11,0.15); }
+  .practical-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .practical-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 3vw, 34px); font-weight: 300; color: var(--warm-dark); margin-bottom: 28px; }
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .info-card { background: white; border: 1px solid rgba(184,134,11,0.15); padding: 22px 20px; transition: border-color .2s; }
+  .info-card:hover { border-color: rgba(184,134,11,0.35); }
+  .info-card-label { font-size: 10px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; display: block; }
+  .info-card-value { font-size: 16px; font-weight: 400; color: var(--warm-dark); font-family: 'Cormorant Garamond', serif; }
+  .info-card-note { font-size: 12px; font-weight: 300; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
+  .notes-list { list-style: none; }
+  .notes-list li { font-size: 14px; font-weight: 300; color: var(--text-body); line-height: 1.75; padding: 10px 0; border-bottom: 1px solid rgba(184,134,11,0.12); display: flex; gap: 12px; }
+  .notes-list li:last-child { border-bottom: none; }
+  .notes-list li::before { content: '·'; color: var(--gold); font-size: 18px; line-height: 1.4; flex-shrink: 0; }
+
+  .booking { background: var(--warm-dark); padding: 80px 48px; text-align: center; position: relative; overflow: hidden; }
+  .booking::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(184,134,11,0.1) 0%, transparent 65%); }
+  .booking-inner { position: relative; max-width: 600px; margin: 0 auto; }
+  .booking-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 300; color: var(--cream); line-height: 1.15; margin-bottom: 16px; }
+  .booking-title em { font-style: italic; color: var(--gold-light); }
+  .booking-body { font-size: 15px; font-weight: 300; color: rgba(250,247,242,0.6); line-height: 1.8; margin-bottom: 36px; }
+  .contact-form { max-width: 520px; margin: 0 auto; text-align: left; }
+  .form-row { margin-bottom: 12px; }
+  .form-row input, .form-row textarea { width: 100%; padding: 14px 18px; font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; color: var(--cream); background: rgba(250,247,242,0.08); border: 1px solid rgba(184,134,11,0.35); outline: none; transition: border-color .2s; box-sizing: border-box; }
+  .form-row input::placeholder, .form-row textarea::placeholder { color: rgba(250,247,242,0.4); }
+  .form-row input:focus, .form-row textarea:focus { border-color: var(--gold); }
+  .form-row textarea { resize: vertical; min-height: 100px; }
+
+  .footer { background: var(--black); padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: var(--cream); }
+  .footer-copy { font-size: 11px; color: rgba(140,123,107,0.5); }
+
+  @media (max-width: 900px) {
+    .nav { padding: 16px 24px; }
+    .hero { padding: 56px 24px 48px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+    .hero-photos { height: 220px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
+    .overview-strip { padding: 40px 24px; }
+    .overview-inner { grid-template-columns: 1fr; gap: 32px; }
+    .stops { padding: 48px 24px; }
+    .stop { grid-template-columns: 56px 1fr; }
+    .stop-aside { display: none; }
+    .michele-section { padding: 56px 24px; }
+    .michele-inner { grid-template-columns: 1fr; gap: 40px; }
+    .michele-image { aspect-ratio: 16/9; }
+    .map-section { padding: 0 24px 56px; }
+    .practical { padding: 48px 24px; }
+    .practical-inner { grid-template-columns: 1fr; gap: 40px; }
+    .info-grid { grid-template-columns: 1fr 1fr; }
+    .booking { padding: 64px 24px; }
+    .footer { padding: 32px 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index-tucci.html" class="nav-logo">The Centenarian</a>
+  <a href="index-tucci.html" class="nav-back">← All experiences</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="hero-sub">Farm · Dairy · Cheese · Table</span>
+      <!-- TUCCI BADGE -->
+      <div class="tucci-badge">
+        <span class="tucci-badge-top">As seen on</span>
+        <span class="tucci-badge-sep">·</span>
+        <span class="tucci-badge-main">Tucci in Italy</span>
+        <span class="tucci-badge-sep">·</span>
+        <span class="tucci-badge-top">Disney · National Geographic</span>
+      </div>
+      <h1 class="hero-title"><em>The Shepherd's<br>Experience</em></h1>
+      <p class="hero-route">Cagliari → Gonnostramatza → Fattoria Cuscusa</p>
+      <p class="hero-route">40 minutes from Cagliari each way</p>
+      <div class="glance">
+        <div class="glance-item"><span class="glance-label">Type</span><span class="glance-value">Full Day</span></div>
+        <div class="glance-item"><span class="glance-label">Group</span><span class="glance-value">Up to 8</span></div>
+        <div class="glance-item"><span class="glance-label">Languages</span><span class="glance-value">IT / EN</span></div>
+        <div class="glance-item"><span class="glance-label">Region</span><span class="glance-value">Medio Campidano</span></div>
+      </div>
+      <a href="#book" class="hero-cta">Book this experience →</a>
+    </div>
+    <div class="hero-photos" style="grid-template-rows: 1fr;">
+      <div class="hero-photo">
+        <!-- CHANGE: tuccijonmichele.jpg -->
+        <img src="./tuccijonmichele.jpg" alt="Stanley Tucci, Jon Brownstein and Michele Cuscusa at Fattoria Cuscusa">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="overview-strip">
+  <div class="overview-inner">
+    <div>
+      <span class="section-label">The experience</span>
+      <h2 class="overview-title">A day with organic winemaker, cheesemaker and shepherd, Michele Cuscusa</h2>
+      <p class="overview-body">Spend a full day at Fattoria Cuscusa — Michele Cuscusa's organic farm and dairy in Gonnostramatza. Michele is a third-generation shepherd, the son of the ancient transumanza tradition that has shaped Sardinian culture for four thousand years. He also makes wine, cooks as an agrichef, and farms with 700 sheep and 300 goats.</p>
+      <p class="overview-body">A day on his farm is an entry point into an older world: simple food, extraordinary ingredients, a hospitality so natural it feels like memory.</p>
+      <ul class="overview-bullets">
+        <li><span class="bullet-label">Type</span>Farm visit · Cheesemaking · Wine tasting · Lunch and joint cooking session</li>
+        <li><span class="bullet-label">Duration</span>Full day — departs Cagliari, returns early evening</li>
+        <li><span class="bullet-label">Group size</span>Small group, maximum 8 guests</li>
+        <li><span class="bullet-label">Languages</span>Italian and English throughout</li>
+        <li><span class="bullet-label">Includes</span>Driver, guide, all activities and meals — fully all inclusive</li>
+        <li><span class="bullet-label">Also available</span>As part of the 12-day Harvest Intensive tour</li>
+        <li><span class="bullet-label">Upon request</span>Underground suckling pig — 12-hour sleepover activity</li>
+        <li><span class="bullet-label">Optional</span>Care package — Michele's wine and the cheese you made, sent home once the cheese has aged</li>
+      </ul>
+    </div>
+    <div>
+      <span class="section-label">The day</span>
+      <div style="background: var(--warm-dark); padding: 28px;">
+        <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(184,134,11,0.15)"><span style="font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);min-width:90px">Morning</span><span style="font-size:13px;font-weight:300;color:rgba(250,247,242,0.75)">Arrival at the farm — meet Michele and the animals</span></div>
+        <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(184,134,11,0.15)"><span style="font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);min-width:90px">Mid-morning</span><span style="font-size:13px;font-weight:300;color:rgba(250,247,242,0.75)">Cheesemaking session — hands on with Michele</span></div>
+        <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(184,134,11,0.15)"><span style="font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);min-width:90px">Midday</span><span style="font-size:13px;font-weight:300;color:rgba(250,247,242,0.75)">Wine tasting from Michele's own vines</span></div>
+        <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(184,134,11,0.15)"><span style="font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);min-width:90px">Afternoon</span><span style="font-size:13px;font-weight:300;color:rgba(250,247,242,0.75)">Lunch cooked together at Michele's family table</span></div>
+        <div style="display:flex;gap:12px;padding:10px 0"><span style="font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);min-width:90px">Late afternoon</span><span style="font-size:13px;font-weight:300;color:rgba(250,247,242,0.75)">Hike on the farm or to the nearby Giara di Gesturi to see the indigenous miniature horses</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stops">
+  <div class="stops-header">
+    <span class="section-label">The day in detail</span>
+    <h2 class="stops-title">What to expect at each stage</h2>
+  </div>
+
+  <div class="stop">
+    <div class="stop-num-col"><span class="stop-num">01</span></div>
+    <div class="stop-content">
+      <span class="stop-time">Morning</span>
+      <h3 class="stop-title">Arrival at Fattoria Cuscusa</h3>
+      <p class="stop-location">Gonnostramatza · Medio Campidano, South Sardinia</p>
+      <p class="stop-body">The farm sits in the rolling hills of the Medio Campidano, the bread basket for ancient Rome. Michele will meet you at the gate. Upon arrival you will enjoy the view of the extinct volcano, Monte Arci, the perfumes of the more than 150 indigenous plants on the organic farm. Last but not least, Michele's family come from Sedilo, one of the most important horse back riding towns in Sardinia, explaining why they have some of the most beautiful horses on their farm.</p>
+      <ul class="stop-bullets">
+        <li>Meet Michele and his family — the third generation of shepherds on this land</li>
+        <li>Walk the farm — 700 sheep and 300 goats, organic certified since the beginning</li>
+        <li>See the dairy where the milk becomes cheese, ricotta, gelato and more</li>
+        <li>Understand the transumanza — the ancient shepherding tradition that shaped this island</li>
+      </ul>
+    </div>
+    <div class="stop-aside">
+      <span class="stop-aside-label">Details</span>
+      <div class="stop-detail"><span class="stop-detail-key">Duration</span><span class="stop-detail-val">Approx. 60–90 minutes</span></div>
+      <div class="stop-detail"><span class="stop-detail-key">Type</span><span class="stop-detail-val">Farm walk · Outdoor · Cultural</span></div>
+      <div class="stop-detail"><span class="stop-detail-key">Note</span><span class="stop-detail-val">Wear comfortable shoes suitable for a working farm</span></div>
+      <div class="stop-highlight">
+        <p>"He picked up a pencil and began listing everything he could make from his milk. He kept going. He listed nearly a hundred products before he put the pencil down."</p>
+        <cite>— Jon Brownstein on Michele</cite>
+      </div>
+    </div>
+  </div>
+
+  <div class="stop" style="margin-top:2px">
+    <div class="stop-num-col"><span class="stop-num">02</span></div>
+    <div class="stop-content">
+      <span class="stop-time">Mid-morning</span>
+      <h3 class="stop-title">Cheesemaking with Michele</h3>
+      <p class="stop-location">The dairy at Fattoria Cuscusa</p>
+      <p class="stop-body">Michele uses techniques passed down through generations — the same methods used on this island for three thousand years. You will work alongside him in the dairy, learning the process from milk to finished cheese. This is not a demonstration. You will make it yourself, with your hands, guided by his.</p>
+      <ul class="stop-bullets">
+        <li>Hands-on cheesemaking — Pecorino, ricotta, fresh varieties</li>
+        <li>Learn traditional Sardinian dairy techniques used for millennia</li>
+        <li>Understand the difference between organic and conventional production</li>
+        <li>Taste at each stage — fresh curd, aged, smoked</li>
+      </ul>
+    </div>
+    <div class="stop-aside">
+      <span class="stop-aside-label">Details</span>
+      <div class="stop-detail"><span class="stop-detail-key">Duration</span><span class="stop-detail-val">Approx. 90 minutes</span></div>
+      <div class="stop-detail"><span class="stop-detail-key">Type</span><span class="stop-detail-val">Hands-on workshop · Dairy · Food</span></div>
+      <div class="stop-detail"><span class="stop-detail-key">Note</span><span class="stop-detail-val">Dairy environment — inform us of any allergies</span></div>
+      <div class="stop-highlight">
+        <p>"Ricotta. Casa'axedu. Stracciatella. Soft-serve sheep's milk gelato with onions and mirto..."</p>
+        <cite>— Michele's list, still going</cite>
+      </div>
+    </div>
+  </div>
+
+  <div class="stop" style="margin-top:2px">
+    <div class="stop-num-col"><span class="stop-num">03</span></div>
+    <div class="stop-content">
+      <span class="stop-time">Midday</span>
+      <h3 class="stop-title">Wine tasting from Michele's vines</h3>
+      <p class="stop-location">The vineyard at Fattoria Cuscusa</p>
+      <p class="stop-body">Michele grows Cannonau, Bovale, Vermentino and Semidano organic grapes with a fraction of added sulphites. I cannot tell you how many people come to the farm and tell me they cannot eat pasta, bread or drink white wine — and leave telling me they have never felt so good after a meal.</p>
+      <ul class="stop-bullets">
+        <li>Visit the vineyard with Michele to understand more about organic wine production</li>
+        <li>Taste Cannonau directly from the farm that grew it</li>
+        <li>Understand why Sardinian wine is unlike anything else in Italy</li>
+        <li>Learn about the different Sardinian wines with a wine expert</li>
+        <li>Taste alongside Michele's own cheeses and other dishes — the pairings as they were always meant to be</li>
+      </ul>
+    </div>
+    <div class="stop-aside">
+      <span class="stop-aside-label">Details</span>
+      <div class="stop-detail"><span class="stop-detail-key">Duration</span><span class="stop-detail-val">Approx. 45 minutes</span></div>
+      <div class="stop-detail"><span class="stop-detail-key">Type</span><span class="stop-detail-val">Wine tasting · Outdoor · Paired</span></div>
+      <div class="stop-detail"><span class="stop-detail-key">Note</span><span class="stop-detail-val">Non-alcoholic alternatives available on request</span></div>
+    </div>
+  </div>
+
+  <div class="stop" style="margin-top:2px">
+    <div class="stop-num-col"><span class="stop-num">04</span></div>
+    <div class="stop-content">
+      <span class="stop-time">Afternoon</span>
+      <h3 class="stop-title">Lunch at Michele's table</h3>
+      <p class="stop-location">The family kitchen · Fattoria Cuscusa</p>
+      <!-- CHANGE: Tucci in Italy mention -->
+      <p class="stop-body">Lunch is cooked together at Michele's family table — in his kitchen, using ingredients from the farm. This is the table that Stanley Tucci sat down to on Tucci in Italy. The same food, the same hands, the same extraordinary hospitality that made the episode what it was.</p>
+      <ul class="stop-bullets">
+        <li>Cook alongside Michele — a meal built from what the farm produces</li>
+        <li>Sardinian fregula and/or Lorighittas (hand made from nearby Morgongiori), farm meat, organic vegetables, fresh cheese</li>
+        <li>Michele's own Cannonau, Vermentino and Semidano on the table throughout</li>
+        <li>At the end of the meal a special treat: most likely the world's oldest and rarest cheeses — Casu Marzu and Calle Crabittu — to be described when we eat them</li>
+        <li>After lunch, an optional hike on the farm or to the nearby Giara di Gesturi to see the indigenous miniature horses</li>
+      </ul>
+    </div>
+    <div class="stop-aside">
+      <span class="stop-aside-label">Details</span>
+      <div class="stop-detail"><span class="stop-detail-key">Duration</span><span class="stop-detail-val">2–3 hours</span></div>
+      <div class="stop-detail"><span class="stop-detail-key">Type</span><span class="stop-detail-val">Cooking &amp; lunch · Family table</span></div>
+      <div class="stop-detail"><span class="stop-detail-key">Included</span><span class="stop-detail-val">Fully included in experience price</span></div>
+      <div class="stop-detail"><span class="stop-detail-key">Dietary</span><span class="stop-detail-val">Advise requirements at booking</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="michele-section">
+  <div class="michele-inner">
+    <div>
+      <span class="section-label" style="color:rgba(184,134,11,0.8)">Your host</span>
+      <h2 class="michele-title">Michele<br><em>Cuscusa</em></h2>
+      <p class="michele-body">Michele Cuscusa is a shepherd. That is how he introduces himself, and it is the most precise thing you can say about him — he is the son of the transumanza, the ancient shepherding tradition that has shaped Sardinian culture for four thousand years.</p>
+      <p class="michele-body">He is also a winemaker, an agrichef, and an organic farmer. A man rooted in the oldest traditions of his island who is entirely open to the new. Most guests leave Sardinia thinking about Michele's charismatic and welcoming personality and of course his goat and sheep's milk yogurt based gelato (beelato) and his fregula — Sardinian round pasta — with vegetables.</p>
+      <ul class="products-list">
+        <li>700 sheep and 300 goats — organic certified</li>
+        <li>Cannonau from his own vines</li>
+        <li>Nearly 100 products from his dairy</li>
+        <li>Gonnostramatza, Medio Campidano</li>
+        <!-- CHANGE: Tucci in Italy mention -->
+        <li>As seen on Tucci in Italy · Disney · National Geographic</li>
+      </ul>
+    </div>
+    <div class="michele-image">
+      <img src="michelecuscusa.jpg.JPG" alt="Michele Cuscusa at the farm">
+    </div>
+  </div>
+</section>
+
+<section class="map-section">
+  <div class="map-inner">
+    <div class="map-header">
+      <div>
+        <span class="section-label" style="color:rgba(184,134,11,0.8)">The route</span>
+        <h2 class="map-title">South Sardinia</h2>
+      </div>
+      <span class="map-subtitle">~60km from Cagliari · Full day</span>
+    </div>
+    <iframe
+      class="map-embed"
+      src="https://www.google.com/maps/embed?pb=!1m28!1m8!1m3!1d195386.6!2d8.95!3d39.45!3m2!1i1024!2i768!4f13.1!4m17!3e0!4m5!1s0x12e734dd31e98e21%3A0x5f5d1c93f0a2c1b1!2sCagliari%2C%20Sardinia!3m2!1d39.2238!2d9.1217!4m5!1s0x12e6b5e6d7c8a9b0%3A0x1!2sGonnostramatza%2C%20Sardinia!3m2!1d39.5667!2d8.8333!5e0!3m2!1sen!2sit!4v1700000000001"
+      allowfullscreen=""
+      loading="lazy">
+    </iframe>
+    <div class="map-route-strip">
+      <div class="map-stop"><div class="map-stop-dot"></div><span class="map-stop-name">Cagliari</span></div>
+      <span class="map-stop-arrow">→</span>
+      <div class="map-stop"><div class="map-stop-dot"></div><span class="map-stop-name">Gonnostramatza</span></div>
+      <span class="map-stop-arrow">→</span>
+      <div class="map-stop"><div class="map-stop-dot"></div><span class="map-stop-name">Fattoria Cuscusa</span></div>
+      <span class="map-stop-arrow">→</span>
+      <div class="map-stop"><div class="map-stop-dot"></div><span class="map-stop-name">Cagliari</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="practical">
+  <div class="practical-inner">
+    <div>
+      <span class="section-label">Practical information</span>
+      <h2 class="practical-title">What you need to know</h2>
+      <div class="info-grid">
+        <div class="info-card"><span class="info-card-label">Duration</span><div class="info-card-value">Full day</div><div class="info-card-note">Departs Cagliari ~9am, returns ~6pm</div></div>
+        <div class="info-card"><span class="info-card-label">Group size</span><div class="info-card-value">Up to 8</div><div class="info-card-note">Private groups available on request</div></div>
+        <div class="info-card"><span class="info-card-label">Languages</span><div class="info-card-value">IT / EN</div><div class="info-card-note">Fully guided in both languages</div></div>
+        <div class="info-card"><span class="info-card-label">Included</span><div class="info-card-value">All inclusive</div><div class="info-card-note">Driver, guide, all activities and meals</div></div>
+        <div class="info-card"><span class="info-card-label">Season</span><div class="info-card-value">Year round</div><div class="info-card-note">Every season offers something different</div></div>
+        <div class="info-card"><span class="info-card-label">Departure</span><div class="info-card-value">Cagliari</div><div class="info-card-note">Hotel pickup available</div></div>
+      </div>
+    </div>
+    <div>
+      <span class="section-label">Notes</span>
+      <h2 class="practical-title">Good to know</h2>
+      <ul class="notes-list">
+        <li>Wear comfortable shoes suitable for a working farm — some areas are uneven ground</li>
+        <li>Bring a layer — mornings on the farm can be cool even in summer</li>
+        <li>The dairy environment involves animal milk — please advise of any allergies at booking</li>
+        <li>Dietary requirements for lunch should be shared at time of booking</li>
+        <li>Non-alcoholic alternatives are available for the wine tasting — just ask</li>
+        <li>This experience is available as a standalone day or as part of the 12-day Harvest Intensive</li>
+        <li>Private bookings for families or groups welcome — contact us to discuss</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="book">
+  <div class="booking-inner">
+    <span class="section-label" style="color:rgba(184,134,11,0.8)">Reserve your place</span>
+    <h2 class="booking-title"><em>Join us<br>at the farm</em></h2>
+    <p class="booking-body">Send us a message and we'll be in touch to confirm availability and details.</p>
+    <div class="contact-form">
+      <div class="form-row"><input type="text" id="enquiry-name" placeholder="Your name"></div>
+      <div class="form-row"><input type="email" id="enquiry-email" placeholder="Your email address"></div>
+      <div class="form-row"><textarea id="enquiry-details" placeholder="Any questions or details..." rows="4"></textarea></div>
+      <button onclick="sendEnquiry()" class="hero-cta" style="width:100%;text-align:center;">Send my interest →</button>
+    </div>
+    <div id="form-success" style="display:none;margin-top:24px;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:var(--cream);">Thank you — we'll be in touch shortly.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <span class="footer-logo">The Centenarian</span>
+  <span class="footer-copy">© 2026 Trigu Italia · Sardinia · Est. 2014</span>
+</footer>
+
+<script>
+function sendEnquiry() {
+  var name = document.getElementById('enquiry-name').value.trim();
+  var email = document.getElementById('enquiry-email').value.trim();
+  var details = document.getElementById('enquiry-details').value.trim();
+  var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !re.test(email)) { document.getElementById('enquiry-email').style.borderColor='#c0392b'; document.getElementById('enquiry-email').focus(); return; }
+  if (!details) details = 'I am interested, tell me more.';
+  fetch('https://formspree.io/f/mkopevbo', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify({name:name,email:email,message:details,_subject:'Shepherd Day Enquiry — Tucci in Italy'}) })
+  .then(function() { document.getElementById('booking-form').style.display='none'; document.getElementById('form-success').style.display='block'; })
+  .catch(function() { alert('Something went wrong. Please email jon@triguitalia.com'); });
+}
+</script>
+
+</body>
+</html>
